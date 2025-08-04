@@ -42,7 +42,7 @@ def initialize_driver():
                       "Please ensure Google Chrome is available on the system where this script is executed.")
         return None
 
-# --- Existing Function: extract_sebi_circulars_on_page (Modified for multi-page extraction) ---
+
 def extract_sebi_circulars_on_page(page_number: int) -> pd.DataFrame:
     """
     Extracts circulars from a specific page number on the SEBI website.
@@ -254,7 +254,7 @@ def get_circular_text_from_link(link: str) -> str:
         if driver:
             driver.quit()
 
-# --- Existing Function: summarize_circular_text (No changes, but ensure your API key is valid) ---
+# --- Existing Function: summarize_circular_text 
 async def summarize_circular_text(circular_text: str, circular_link: str) -> str:
     """
     Summarizes the given circular text using the Gemini API.
@@ -508,7 +508,7 @@ async def update_extraction_outputs(df, page_num):
 
     return [dropdown_update, status_update, key_terms_update]
 
-# --- Gradio UI Definition ---
+# --- Streamlit ---
 st.set_page_config(page_title="SEBI Circulars Extractor & Summarizer", layout="wide")
 st.title("SEBI Circulars Extractor & Summarizer")
 st.markdown("---")
