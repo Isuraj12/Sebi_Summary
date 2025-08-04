@@ -14,6 +14,10 @@ import streamlit as st
 import json
 import requests
 import asyncio
+import os 
+from dotenv import load_dotenv
+load_dotenv()
+
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -222,7 +226,7 @@ async def summarize_circular_text(circular_text: str, circular_link: str) -> str
     payload = {"contents": chat_history}
 
    
-    api_key = "AIzaSyBpS5dMCXue2N2dRp-yTRBaJrvdfAe5Bqw" 
+    api_key = os.getenv("Api_Key")
     api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}" 
 
     try:

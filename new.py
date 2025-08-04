@@ -16,6 +16,10 @@ import requests
 import asyncio
 import re # For regular expressions in local search
 import streamlit as st
+import os 
+
+from dotenv import load_dotenv
+load_dotenv()
 
 # Setup basic logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -269,7 +273,7 @@ async def summarize_circular_text(circular_text: str, circular_link: str) -> str
     chat_history = [{"role": "user", "parts": [{"text": prompt}]}]
     payload = {"contents": chat_history}
 
-    api_key = "AIzaSyARysBSxHOzeEabBga0iORsmEw9OzaJucY" # <--- REPLACE WITH YOUR ACTUAL API KEY
+    api_key = os.getenv("Api_Key") 
     api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
     try:
@@ -314,7 +318,7 @@ async def extract_key_terms_from_title(title: str) -> str:
     chat_history = [{"role": "user", "parts": [{"text": prompt}]}]
     payload = {"contents": chat_history}
 
-    api_key = "AIzaSyBpS5dMCXue2N2dRp-yTRBaJrvdfAe5Bqw" # <--- REPLACE WITH YOUR ACTUAL API KEY
+    api_key = os.getenv("Api_Key")
     api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
     try:
